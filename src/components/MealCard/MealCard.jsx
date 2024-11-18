@@ -51,7 +51,7 @@ export default function MealCard({ item }) {
         <div className=" mt-4">
           <Link
             to={`/meal-details/${_id}`}
-            className="btn text-base bg-orange-400 hover:bg-orange-500 border-orange-400 hover:orange-yellow-500 text-slate-900 rounded-md ">
+            className="btn text-base bg-slate-200 hover:bg-slate-500 hover:text-white border-slate-400 hover:border-black text-black rounded-md ">
             View Details
           </Link>
         </div>

@@ -5,6 +5,7 @@ import Root from "./components/Root/Root";
 import "./index.css";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import ProductPage from "./components/ProductPage/ProductPage";
+import MealDetails from "./components/MealDetails/MealDetails";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <ProductPage />,
+      },
+      {
+        path: "/meal-details/:mealId",
+        element: <MealDetails />,
       },
     ],
   },

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import useScrollToTop from "./../../hooks/useScrollToTop";
 import MealCard from "./../MealCard/MealCard";
+import Loading from "./../Loading/Loading";
 
 export default function Meals() {
   useScrollToTop();
+  const [loading, setLoading] = useState(true);
   const [priceRange, setPriceRange] = useState([0, 10]);
   const [meals, setMeals] = useState([]);
   const [search, setSearch] = useState("");
@@ -15,12 +17,11 @@ export default function Meals() {
     const getData = async () => {
       try {
         const res = await fetch(
-          "https://juborajsujon.github.io/personal-project-api/meal.json"
+          "https://juborajsujon.github.io/personal-project-api/meal2.json"
         );
         const data = await res.json();
-        console.log(data);
         setMeals(data);
-        setTotalMeals(data);
+        setLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -95,8 +96,10 @@ export default function Meals() {
               </div>
               <div>
                 <div className="space-y-1">
-                  <p className=" font-medium">Price</p>
-                  <p>${maxPrice}</p>
+                  <div className="flex gap-3">
+                    <p className=" font-medium">Price</p>
+                    <p>${maxPrice}</p>
+                  </div>
                   <input
                     type="range"
                     min={minPrice}
@@ -112,7 +115,10 @@ export default function Meals() {
         </div>
       </div>
       <div>
-        {meals.length === 0 && <p className="text-center">No meal found</p>}
+        {loading && <Loading />}
+        {meals.length === 0 && (
+          <p className="text-center text-2xl mt-4">No meal found</p>
+        )}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 justify-between">
           {meals?.map((item) => (
             <MealCard item={item} key={item._id} />
