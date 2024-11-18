@@ -13,7 +13,7 @@ const Navbar = () => {
               ? "text-slate-900 border-b-4 border-slate-400 hover:border-slate-300"
               : "hover:text-slate-900 hover:bg-slate-400"
           }>
-          Product Gallery
+          Meal Gallery
         </NavLink>
       </li>
     </>
